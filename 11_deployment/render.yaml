@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: learnsphere-ai-ekanath2417
+    env: python
+    buildCommand: pip install -r 06_code/requirements.txt
+    startCommand: cd 06_code && gunicorn --bind 0.0.0.0:$PORT backend.wsgi:app
+    healthCheckPath: /
+    disk:
+      name: learnsphere-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_PATH
+        value: /var/data/learnsphere.db
+      - key: DATABASE_URL
+        value: sqlite:////var/data/learnsphere.db
+      - key: UPLOAD_FOLDER
+        value: /var/data/uploads
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: FLASK_DEBUG
+        value: "0"
+      - key: CORS_ORIGINS
+        value: "https://ekanath2417.github.io"

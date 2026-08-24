@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+06_code/database/*.db
+06_code/storage/uploads/*
+!06_code/storage/uploads/.gitkeep
+.pytest_cache/
+.coverage
+node_modules/
+11_deployment/*.log
+04_active_workspace/*.log
+04_active_workspace/*.err.log
+06_code/test_output.txt

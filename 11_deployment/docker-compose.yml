@@ -1,0 +1,16 @@
+services:
+  learnsphere:
+    build:
+      context: ..
+      dockerfile: 11_deployment/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Set JWT_SECRET_KEY in your environment}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5000}
+    volumes:
+      - learnsphere-data:/app/database
+      - learnsphere-uploads:/app/storage/uploads
+volumes:
+  learnsphere-data:
+  learnsphere-uploads:
